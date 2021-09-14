@@ -6,7 +6,7 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:42:45 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/14 15:34:08 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/14 16:00:26 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void ft_sending(char *str, pid_t pid)
 	int i;
 
 	i = 0;
-	while(str)
+	while(str[i])
 	{
 		if (str[i] == '0')
 			kill(pid, SIGUSR1);
@@ -120,6 +120,6 @@ int main(int argc, char *argv[])
 	else
 		write(1,"./client pid string\n", 20);
 	//fscanf(stdin, "c");
-	printf("----The client sent the data to the server ----\n");
+	printf("---- Data sent to the server ----\n");
 	return 0;
 }
