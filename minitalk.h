@@ -6,7 +6,7 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 16:13:06 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/14 09:20:29 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/14 19:33:42 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,9 @@
 # include "./libft/libft.h"
 # include <signal.h>
 
+typedef struct	server
+{
+	int flag;
+	int bit;
+}				t_server;
 #endif
