@@ -6,7 +6,7 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 16:13:06 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/14 19:33:42 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/15 11:56:45 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ typedef struct	server
 {
 	int flag;
 	int bit;
+	char c;
 }				t_server;
 #endif
