@@ -6,7 +6,7 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:42:45 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/15 19:21:40 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/17 11:30:43 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include <stdio.h>
 #include <sys/types.h>
 
-void ft_sending(char c, pid_t pid)
+/* Send each characters bit by bit with a bitwise operator */
+void ft_sending(char c, pid_t pid_server)
 {
 	int i;
 
@@ -22,9 +23,9 @@ void ft_sending(char c, pid_t pid)
 	while (i >= 0)
 	{
 		if ((c >> i) & 1)
-			kill(pid, SIGUSR2);
+			kill(pid_server, SIGUSR2);
 		else
-			kill(pid, SIGUSR1);
+			kill(pid_server, SIGUSR1);
 		usleep(100);
 		i--;
 	}
@@ -35,38 +36,36 @@ int main(int argc, char *argv[])
 {
 	if (argc == 3)
 	{
-		pid_t	pid;
+		pid_t	pid_server;
 		char	*string;
 		int		length_string;
 		int 	i;
 
 		i = 0;
 		/* Pass PID from char to int */
-		pid = ft_atoi(argv[1]);
-		printf("PID of the server : %d\n", pid);
+		pid_server = ft_atoi(argv[1]);
 
 		/* Transfer the input into the varible string and get the length of it */
 		string = argv[2];
 		length_string = ft_strlen(string);
-		//printf("length_string : %d\n", length_string);
 
 		/* Go trough the string and send it to the server as signals */
 		while (i < length_string)
 		{
-			ft_sending(string[i], pid);
+			ft_sending(string[i], pid_server);
 			i++;
 		}
 	}
 	else
 		write(1,"./client pid string\n", 20);
-	//fscanf(stdin, "c");
-	printf("---- Data sent to the server ----\n");
+	ft_putstr_fd("---- Data sent to the server ----\n", 1);
 	return 0;
 }
 
 
 
-/* OLD VERSION
+/** OLD VERSION **
+
 ** Reverse a string
 void	ft_revers(char *str)
 {
