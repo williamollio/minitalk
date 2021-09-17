@@ -6,7 +6,7 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 16:14:22 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/17 15:05:25 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/17 15:13:53 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ static	t_server server;
 void	ft_handler(int sig, siginfo_t *siginfo, void *context)
 {
 	(void)context;
-	// if (sig == SIGUSR1 || sig == SIGUSR2)
-	// 	kill(siginfo->si_pid, SIGUSR1);
 	if (sig == SIGUSR1)
 		server.flag = 0;
 	else if (sig == SIGUSR2)

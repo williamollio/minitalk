@@ -6,7 +6,7 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:42:45 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/17 15:09:29 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/17 15:16:24 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,9 @@
 #include <stdio.h>
 #include <sys/types.h>
 
-//static	t_client client;
-
 /* Handle each signal receive from the server */
 void ft_handler()
 {
-	// if (sig == SIGUSR1)
-	// 	ft_putstr_fd("S\n", 1);
-	// else if (sig == SIGUSR2)
-	// 	exit(EXIT_SUCCESS);
 	ft_putstr_fd(" -- Signals well received -- \n", 1);
 	exit(EXIT_SUCCESS);
 }
@@ -52,28 +46,17 @@ int main(int argc, char *argv[])
 		struct sigaction s_signal;
 
 		pid_t	pid_server;
-		char	*string;
 		int		length_string;
 		int 	i;
 
 		s_signal.sa_handler = &ft_handler;
-
-		pid_server = ft_atoi(argv[1]);
-		string = argv[2];
-		length_string = ft_strlen(string);
-
 		i = 0;
 		while(1)
 		{
-			if (sigaction(SIGUSR1, &s_signal, NULL) ||
-			sigaction(SIGUSR2, &s_signal, NULL) < 0)
+			sigaction(SIGUSR2, &s_signal, NULL);
+			while (i <= ft_strlen(*argv[2]))
 			{
-				ft_putendl_fd("An error has occurred", 1);
-				exit(EXIT_FAILURE);
-			}
-			while (i <= length_string)
-			{
-				ft_sending(string[i], pid_server);
+				ft_sending(argv[2][i], ft_atoi(argv[1]));
 				i++;
 			}
 			pause();

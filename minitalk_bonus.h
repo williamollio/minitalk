@@ -6,7 +6,7 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 16:13:06 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/17 11:39:06 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/17 15:13:22 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,6 @@ typedef struct	server
 	int bit;
 	char c;
 }				t_server;
-
-/* Structure used client side */
-typedef struct	client
-{
-	int signal;
-}				t_client;
 
 /* Structure of sigaction
 **
