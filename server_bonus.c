@@ -6,7 +6,7 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 16:14:22 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/17 15:13:53 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/20 11:10:37 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,15 @@
 #include <stdio.h>
 #include <sys/types.h>
 
-static	t_server server;
+static t_server	g_server;
 
-
-void	ft_handler(int sig, siginfo_t *siginfo, void *context)
-{
-	(void)context;
-	if (sig == SIGUSR1)
-		server.flag = 0;
-	else if (sig == SIGUSR2)
-		server.flag = 1;
-	server.bit--;
-	server.c += (server.flag << server.bit);
-	if (server.bit == 0)
-	{
-		if (!server.c)
-		{
-			ft_putchar_fd('\n', 1);
-			kill(siginfo->si_pid, SIGUSR2);
-		}
-		ft_putchar_fd(server.c, 1);
-		server.bit = 8;
-		server.c = 0;
-	}
-}
-
-int	main()
+/* Launching of the server and variables initialization */
+void	ft_init(void)
 {
 	pid_t	pid;
 
-	struct sigaction s_signal;
-
-	ft_memset(&s_signal, '\0', sizeof(s_signal));
-	sigemptyset(&s_signal.sa_mask);
-
-	/* Use the sa_sigaction field because the handles has two additional parameters */
-	s_signal.sa_sigaction = &ft_handler;
-
-	/* The SA_SIGINFO flag tells sigaction() to use the sa_sigaction field, not sa_handler. */
-	s_signal.sa_flags = SA_SIGINFO;
-
-	server.bit = 8;
-	server.c = 0;
+	g_server.bit = 8;
+	g_server.c = 0;
 	pid = getpid();
 	ft_putstr_fd("---- Lauching of the server ----", 1);
 	ft_putstr_fd("\n	------------- ", 1);
@@ -67,7 +34,41 @@ int	main()
 	ft_putstr_fd("	------------- ", 1);
 	ft_putstr_fd("\n -- Waiting for signals -- \n", 1);
 	ft_putstr_fd("	------------- \n", 1);
-	while(1)
+}
+
+/* Decoding and sending signal */
+void	ft_handler(int sig, siginfo_t *siginfo, void *context)
+{
+	(void)context;
+	if (sig == SIGUSR1)
+		g_server.flag = 0;
+	else if (sig == SIGUSR2)
+		g_server.flag = 1;
+	g_server.bit--;
+	g_server.c += (g_server.flag << g_server.bit);
+	if (g_server.bit == 0)
+	{
+		if (!g_server.c)
+		{
+			ft_putchar_fd('\n', 1);
+			kill(siginfo->si_pid, SIGUSR2);
+		}
+		ft_putchar_fd(g_server.c, 1);
+		g_server.bit = 8;
+		g_server.c = 0;
+	}
+}
+
+int	main(void)
+{
+	struct sigaction	s_signal;
+
+	ft_memset(&s_signal, '\0', sizeof(s_signal));
+	sigemptyset(&s_signal.sa_mask);
+	s_signal.sa_flags = SA_SIGINFO;
+	s_signal.sa_sigaction = &ft_handler;
+	ft_init();
+	while (1)
 	{
 		sigaction(SIGUSR1, &s_signal, NULL);
 		sigaction(SIGUSR2, &s_signal, NULL);

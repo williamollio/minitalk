@@ -6,7 +6,7 @@
 /*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:42:45 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/17 11:30:43 by wollio           ###   ########.fr       */
+/*   Updated: 2021/09/20 11:20:58 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include <sys/types.h>
 
 /* Send each characters bit by bit with a bitwise operator */
-void ft_sending(char c, pid_t pid_server)
+void	ft_sending(char c, pid_t pid_server)
 {
-	int i;
+	int	i;
 
 	i = 7;
 	while (i >= 0)
@@ -29,27 +29,21 @@ void ft_sending(char c, pid_t pid_server)
 		usleep(100);
 		i--;
 	}
-	return;
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
+	pid_t	pid_server;
+	char	*string;
+	int		length_string;
+	int		i;
+
 	if (argc == 3)
 	{
-		pid_t	pid_server;
-		char	*string;
-		int		length_string;
-		int 	i;
-
 		i = 0;
-		/* Pass PID from char to int */
 		pid_server = ft_atoi(argv[1]);
-
-		/* Transfer the input into the varible string and get the length of it */
 		string = argv[2];
 		length_string = ft_strlen(string);
-
-		/* Go trough the string and send it to the server as signals */
 		while (i < length_string)
 		{
 			ft_sending(string[i], pid_server);
@@ -57,12 +51,10 @@ int main(int argc, char *argv[])
 		}
 	}
 	else
-		write(1,"./client pid string\n", 20);
+		write(1, "./client pid string\n", 20);
 	ft_putstr_fd("---- Data sent to the server ----\n", 1);
-	return 0;
+	return (0);
 }
-
-
 
 /** OLD VERSION **
 
