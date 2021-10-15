@@ -22,12 +22,11 @@ Open a terminal and run following command:
 ```
 git clone <repository url>
 ```
-# Instalation
-Then go to created repository and run following command:
+# Run
+Go to created repository and run following command:
 ```
 make
 ```
-# Run
 To start run following command :
 ```
 ./server
