@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wollio <williamollio@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 16:14:22 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/20 11:10:37 by wollio           ###   ########.fr       */
+/*   Updated: 2021/10/15 20:54:52 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk_bonus.h"
+#include "../includes/minitalk_bonus.h"
 #include <stdio.h>
 #include <sys/types.h>
 

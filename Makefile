@@ -4,15 +4,15 @@ NAME = minitalk
 
 CFLAGS = -Wall -Wextra -Werror
 
-INCLUDES = minitalk.h
+INCLUDES = ./includes/minitalk.h
 
 SERVER = server
 
 CLIENT = client
 
-SERVER_SRC = server.c
+SERVER_SRC = ./src/server.c
 
-CLIENT_SRC = client.c
+CLIENT_SRC = ./src/client.c
 
 SERVER_OBJ = $(SERVER_SRC:.c=.o)
 
@@ -24,9 +24,9 @@ LIBFT  = libft.a
 
 # Bonus part
 
-SERVER_SRC_BONUS = server_bonus.c
+SERVER_SRC_BONUS = ./bonus/server_bonus.c
 
-CLIENT_SRC_BONUS = client_bonus.c
+CLIENT_SRC_BONUS = ./bonus/client_bonus.c
 
 SERVER_OBJ_BONUS = $(SERVER_SRC_BONUS:.c=.o)
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wollio <wollio@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wollio <williamollio@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 16:13:06 by wollio            #+#    #+#             */
-/*   Updated: 2021/09/20 10:41:11 by wollio           ###   ########.fr       */
+/*   Updated: 2021/10/15 20:56:00 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_BONUS
 # define MINITALK_BONUS
-# include "./libft/libft.h"
+# include "../libft/libft.h"
 # include <signal.h>
 
 /* Structure used server side */
