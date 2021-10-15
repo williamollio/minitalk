@@ -15,7 +15,7 @@ Wikipedia article about bitwise operation: https://en.wikipedia.org/wiki/Bitwise
 
 Wikipedia article about signals in C : https://en.wikipedia.org/wiki/C_signal_handling
 
-Subject PDF: https://github.com/akliek/42HN_pipex/blob/master/en.subject.pdf
+Subject PDF: https://github.com/williamollio/minitalk/blob/master/subject/minitalk.pdf
 
 # Clone
 Open a terminal and run following command:
@@ -28,11 +28,32 @@ Then go to created repository and run following command:
 make
 ```
 # Run
-After insatalation run following command:
+To start run following command :
 ```
-./pipex <infile> <cmd1> <cmd2> <outfile>
+./server
 ```
-The execution of the pipex program should do the same as the next shell command:
+After opening another terminal in the same folder, run the following command :
 ```
-$> file1 < cmd1 | cmd2 > file2
+./client <client PID> <string to sent>
+```
+Finally, run to delete the outputs files and the librairy created :
+```
+make fclean
+```
+# Bonus
+Run the followings commands :
+```
+make bonus
+```
+Then :
+```
+./server
+```
+And :
+```
+./client <client PID> <string to sent>
+```
+Finally, run to delete the outputs files and the librairy created :
+```
+make fclean
 ```
