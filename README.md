@@ -75,3 +75,5 @@ struct sigaction {
 	void     (*sa_restorer)(void);
 };
 ```
+# Grade
+[![wollio's 42Project Score](https://badge42.herokuapp.com/api/project/wollio/minitalk)](https://github.com/williamollio/badge42)
