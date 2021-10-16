@@ -6,7 +6,7 @@
 /*   By: wollio <williamollio@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 16:14:22 by wollio            #+#    #+#             */
-/*   Updated: 2021/10/15 20:54:52 by wollio           ###   ########.fr       */
+/*   Updated: 2021/10/16 21:35:40 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	ft_handler(int sig, siginfo_t *siginfo, void *context)
 		if (!g_server.c)
 		{
 			ft_putchar_fd('\n', 1);
+			/* Signal to the client */
 			kill(siginfo->si_pid, SIGUSR2);
 		}
 		ft_putchar_fd(g_server.c, 1);
@@ -65,7 +66,11 @@ int	main(void)
 
 	ft_memset(&s_signal, '\0', sizeof(s_signal));
 	sigemptyset(&s_signal.sa_mask);
+
+	/* The SA_SIGINFO flag tells sigaction() to use the sa_sigaction field, not sa_handler. */
 	s_signal.sa_flags = SA_SIGINFO;
+
+	/*Use the sa_sigaction field because the handles has two additional parameters */
 	s_signal.sa_sigaction = &ft_handler;
 	ft_init();
 	while (1)

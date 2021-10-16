@@ -6,7 +6,7 @@
 /*   By: wollio <williamollio@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 16:13:06 by wollio            #+#    #+#             */
-/*   Updated: 2021/10/15 20:56:00 by wollio           ###   ########.fr       */
+/*   Updated: 2021/10/16 21:30:04 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,9 @@
 /* Structure used server side */
 typedef struct	server
 {
-	int flag;
-	int bit;
-	char c;
+	int		flag;
+	int		bit;
+	char	c;
 }				t_server;
-
-/* Structure of sigaction
-**
-**	struct sigaction {
-**		void     (*sa_handler)(int);
-**		void     (*sa_sigaction)(int, siginfo_t *, void *);
-**		sigset_t   sa_mask;
-**		int        sa_flags;
-**		void     (*sa_restorer)(void);
-**	};
-*/
-
-/* You can set sa_mask in your sigaction call to block certain signals while a particular signal handler runs.
-This way, the signal handler can run without being interrupted itself by signals.
-sigemptyset(&s_signal.sa_mask); */
-
-/* The SA_SIGINFO flag tells sigaction() to use the sa_sigaction field, not sa_handler.
-s_signal.sa_flags = SA_SIGINFO; */
-
-/* Use the sa_sigaction field because the handles has two additional parameters
-s_signal.sa_sigaction = &ft_handler; */
 
 #endif

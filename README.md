@@ -23,7 +23,7 @@ Open a terminal and run following command:
 git clone <repository url>
 ```
 # Run
-Go to created repository and run following command:
+Go to the created repository and run following command:
 ```
 make
 ```
@@ -35,7 +35,7 @@ After opening another terminal in the same folder, run the following command :
 ```
 ./client <client PID> <string to sent>
 ```
-Finally, run to delete the outputs files and the librairy created :
+Finally, run this one to delete the outputs files and the librairy created :
 ```
 make fclean
 ```
@@ -52,7 +52,26 @@ And :
 ```
 ./client <client PID> <string to sent>
 ```
-Finally, run to delete the outputs files and the librairy created :
+Finally, run this one to delete the outputs files and the librairy created :
 ```
 make fclean
+```
+# Explanations
+
+Each characters of the string are sent bits by bits thanks to bitwise operators. In C, a character has a size of one byte (8 bits). The bits are sent from the client to server by using the signals `SIGUSR1` and `SIGUSR2`, each standing for the 0 and 1 respectively.
+In the bonus part, when the server will receive the null-terminator character from the client. It will send back a signal to client. Thanks to the bitwise operators, the programs support the unicode characters. Which was not possible with my initial implementation :
+- Where I was first converting each characters into its binary value (in a string format).
+- Then I was going through the created string and using the same signals when encountering either 0 or 1.
+
+# Sigaction function
+
+In order to send back a signal from the server to the client, I have used the sigaction function, with which I am able to get the pid of the sending process (in this case the client). Here is its structure :
+```
+struct sigaction {
+	void     (*sa_handler)(int);
+	void     (*sa_sigaction)(int, siginfo_t *, void *);
+	sigset_t   sa_mask;
+	int        sa_flags;
+	void     (*sa_restorer)(void);
+};
 ```

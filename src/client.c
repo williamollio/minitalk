@@ -6,7 +6,7 @@
 /*   By: wollio <williamollio@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:42:45 by wollio            #+#    #+#             */
-/*   Updated: 2021/10/15 20:55:15 by wollio           ###   ########.fr       */
+/*   Updated: 2021/10/16 21:37:40 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ int	main(int argc, char *argv[])
 		}
 	}
 	else
+	{
 		write(1, "./client pid string\n", 20);
+		return (0);
+	}
 	ft_putstr_fd("---- Data sent to the server ----\n", 1);
 	return (0);
 }

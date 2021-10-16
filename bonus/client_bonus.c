@@ -6,7 +6,7 @@
 /*   By: wollio <williamollio@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:42:45 by wollio            #+#    #+#             */
-/*   Updated: 2021/10/15 20:54:45 by wollio           ###   ########.fr       */
+/*   Updated: 2021/10/16 21:04:11 by wollio           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_sending(char c, pid_t pid_server)
 			kill(pid_server, SIGUSR2);
 		else
 			kill(pid_server, SIGUSR1);
-		usleep(100);
+		usleep(200);
 		i--;
 	}
 }
