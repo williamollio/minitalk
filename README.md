@@ -17,6 +17,9 @@ Wikipedia article about signals in C : https://en.wikipedia.org/wiki/C_signal_ha
 
 Subject PDF: https://github.com/williamollio/minitalk/blob/master/subject/minitalk.pdf
 
+# Grade
+[![wollio's 42Project Score](https://badge42.herokuapp.com/api/project/wollio/minitalk)](https://github.com/williamollio/badge42)
+
 # Clone
 Open a terminal and run following command:
 ```
@@ -75,5 +78,3 @@ struct sigaction {
 	void     (*sa_restorer)(void);
 };
 ```
-# Grade
-[![wollio's 42Project Score](https://badge42.herokuapp.com/api/project/wollio/minitalk)](https://github.com/williamollio/badge42)
